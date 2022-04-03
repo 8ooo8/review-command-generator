@@ -1,0 +1,25 @@
+{
+    "name": "Code Review Command Generator",
+    "description": "This generates the command used in my company to call for code review on slack",
+    "version": "0.0.0",
+    "default_locale": "en",
+
+    "manifest_version": 2,
+    "permissions": [ 
+        "contextMenus",
+         "activeTab"
+    ],
+
+    "background": {
+        "scripts": [
+            "ctxMenuItemHandler.js"
+        ]
+    },
+
+    "content_scripts" : [{
+        "matches": ["<all_urls>"],
+        "js": ["lib/jquery_min.js", "reviewCmdGetter.js"]
+    }]
+
+
+}
