@@ -4,22 +4,18 @@
     "version": "0.0.0",
     "default_locale": "en",
 
-    "manifest_version": 2,
+    "manifest_version": 3,
     "permissions": [ 
         "contextMenus",
          "activeTab"
     ],
 
     "background": {
-        "scripts": [
-            "ctxMenuItemHandler.js"
-        ]
+        "service_worker": "ctxMenuItemHandler.js"
     },
 
     "content_scripts" : [{
         "matches": ["<all_urls>"],
         "js": ["lib/jquery_min.js", "reviewCmdGetter.js"]
     }]
-
-
 }
