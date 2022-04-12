@@ -2,7 +2,6 @@ let myPort = chrome.runtime.connect({name:"port-from-get-review-cmd-js"});
 
 // get the review cmd when the user clicks the 'Get the !review command' context menu item
 myPort.onMessage.addListener(function(msg){
-    console.log("Listening message.");
     switch(msg.action){
         case "get-review-cmd":
             getReviewCmd();
@@ -11,15 +10,24 @@ myPort.onMessage.addListener(function(msg){
     }
 });
 
-// inform ctxMenuItemHandler.js that the tab is being focused or hovered
+// inform ctxMenuItemHandler.js that the tab is being focused or hovered, or the URL changed,
 // to toggle the availability (enabled / disabled) of the 'Get the !review command' context menu item
 $(window).on('focus', function(){
-	console.log(`This tab got the focus.`);
-	myPort.postMessage({action: "set-focus-on-this-tab", url: window.location.href});
+    console.log('This tab got the focus.');
+    myPort?.postMessage({action: "set-focus-on-this-tab", url: window.location.href});
 });
-$(window).on('mouseover', function(){
-	console.log(`Hovering this tab.`);
-	myPort.postMessage({action: "hover-this-tab", url: window.location.href});
+$(window).on('mousemove', function(){ // mousemove is used instead of mouseover for a better detection
+    console.log('Hovering this tab.');
+    myPort?.postMessage({action: "hover-this-tab", url: window.location.href});
+}); 
+// 'click' + 'keydown' instead of 'popstate' to also handle scenarios like going back to the previous page
+$(window).on('click', function(event){
+    console.log('Possibly the URL was changed.');
+    myPort?.postMessage({action: "possibly-changed-url", url: window.location.href});
+});
+$(window).on('keydown', function(event){
+    console.log('Possibly the URL was changed.');
+    myPort?.postMessage({action: "possibly-changed-url", url: window.location.href});
 });
 
 // generate the review command and place it into the clipboard
