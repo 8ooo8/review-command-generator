@@ -10,7 +10,11 @@ I have developed a Chrome extension to automatically generate the command and pl
 
 ![The snapshot of !Review Command Generator][app-snapshot]
 
-As shown in the above snapshot, the user will need to right click to open the context menu and click on 'Get !review command' to obtain the review command. The generated command will include the current changeset and the related changesets that are not yet merged.
+1. Go to the Gerrit web page as shown in the above snapshot
+1. Right click to open the context menu
+1. Click on 'Get the !review command'
+
+Then, the generated !review command will be placed into your clipboard.
 
 ## Installation
 
@@ -19,9 +23,30 @@ As shown in the above snapshot, the user will need to right click to open the co
 1. Load this directory.
 
 
-[app-snapshot]: <docs/app-snapshot.jpg>
-[ext-page]: <docs/ext-page.jpg>
+## Troubleshooting
+
+### In case the 'Get the !review command' button is disabled when it is supposed to be enabled
+
+1. Move your mouse cursor.
+1. If the above method does not work, hard reload your web page.
+1. If the above method does not work, remove Google Chrome completely from your RAM and swap memory.
+
+### In case this extension does not work as expected after you update / reload it
+
+1. Hard reload your web pages.
+1. If the above method does not work, remove Google Chrome completely from your RAM and swap memory.
+
+### In case this extension results in below error message after you update / reload it
+
+![Uncaught Error: Extension context invalidated.][invalid-ext-ctx]
+
+Ignore it. This error message appears because the content scripts of this extension running on the existing web pages are not yet reloaded. A hard reload of your web pages will reload them.
 
 ## Tested environment
 
 1. Google Chrome Version 98.0.4758.109 (Official Build) (arm64)
+
+[app-snapshot]: <docs/app-snapshot.jpg>
+[ext-page]: <docs/ext-page.jpg>
+[invalid-ext-ctx]: <docs/invalid-ext-ctx.jpg>
+
