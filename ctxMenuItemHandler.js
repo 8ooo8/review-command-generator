@@ -6,7 +6,7 @@ let ctxMenuItemId = "get-review-cmd-ctx-menu";
 // create context menu item
 chrome.contextMenus.create({
     id: ctxMenuItemId,
-    title: chrome.i18n.getMessage("getReviewCmdCtxMenuItemTxt"),
+    title: 'Get the !review command', // chrome.i18n.getMessage("getReviewCmdCtxMenuItemTxt"),
     contexts: ["all"],
     enabled: false,
 }, () => console.log(chrome.runtime.lastError ? `Context menu tem creation failed. Error: ${chrome.runtime.lastError}` : 'Context menu item created.'));

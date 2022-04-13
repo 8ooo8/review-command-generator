@@ -45,8 +45,8 @@ Ignore it. This error message appears because the content scripts of this extens
 ## Tested environment
 
 1. Google Chrome Version 98.0.4758.109 (Official Build) (arm64)
+1. Google Chrome Version 99.0.4844.84 (Official Build) (64-bit)
 
 [app-snapshot]: <docs/app-snapshot.jpg>
 [ext-page]: <docs/ext-page.jpg>
 [invalid-ext-ctx]: <docs/invalid-ext-ctx.jpg>
-
